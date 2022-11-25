@@ -6,7 +6,6 @@ import * as Vue from 'vue';
 
 import filters from "@/utils/filters";
 
-
 window.$filters = filters;
 window.$func = filters;
 window.$methods = filters;

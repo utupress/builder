@@ -68,7 +68,7 @@ export default {
 
     fetchComponent(comp_path) {
 
-        if (!text.includes("/", 1)) {
+        if (!comp_path.includes("/", 1)) {
             comp_path =  comp_path + '/index.vue';
         } else if (Array.isArray(comp_path)) {
             comp_path = comp_path[0];

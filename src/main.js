@@ -123,10 +123,6 @@ const store = createStore({
 });
 
 
-if (store.state.auth.token) {
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.auth.token;
-}
-
 app.use(store);
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -156,8 +152,7 @@ router.afterEach((to, from) => {
 
 
 (async () => {
-
-    await autorouter(router);
+    //await autorouter(router);
 
     app.config.globalProperties.$router = window.$router = router;
 
