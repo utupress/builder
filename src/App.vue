@@ -6,6 +6,18 @@
 
 export default {
   name: 'App',
+  created() {
+
+    var scripts = [
+      "https://cdn.tailwindcss.com",
+    ];
+    
+    scripts.forEach(script => {
+      let tag = document.createElement("script");
+      tag.setAttribute("src", script);
+      document.head.appendChild(tag);
+    });
+  }
 }
 </script>
 

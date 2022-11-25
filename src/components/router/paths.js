@@ -9,6 +9,14 @@ var paths = [
         },
     },
     {
+        path: "/",
+        meta: {
+            public: true,
+        },
+        name: "Home",
+        component: () => import(`@/components/pages/Home.vue`),
+    },
+    {
         path: "/404",
         meta: {
             public: true,

@@ -34,6 +34,8 @@ import "@/css/app.css";
 import config from "@/formkit/config";
 import autorouter from "@/components/router/autorouter";
 
+import Popper from "vue3-popper";
+
 window.$Modal = Modal;
 
 const app = createApp(App)
@@ -157,6 +159,8 @@ router.afterEach((to, from) => {
     app.config.globalProperties.$router = window.$router = router;
 
     app.use(router);
+
+    app.component("Popper", Popper);
 
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  Mount App  xxxxxxxxxxxxxxxxxxxxxxxxxxxx
