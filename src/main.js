@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 
+import router from '@/components/router';
+
 import {
     createStore
 } from 'vuex';
@@ -26,10 +28,11 @@ import "nprogress/nprogress.css";
 
 import App from './App.vue'
 
-import "../css/app.css";
+import "@/css/app.css";
 
 
 import config from "@/formkit/config";
+import autorouter from "@/components/router/autorouter";
 
 window.$Modal = Modal;
 
@@ -41,9 +44,8 @@ const app = createApp(App)
 //xxxxxxxxxxxxxxxxxxxxx  Axios Loader xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-Axios.defaults.baseURL = base_url;
-Axios.defaults.baseURL = base_url;
-
+Axios.defaults.compURL = window.$compURL = 'http://127.0.0.1:8000/components/';
+Axios.defaults.baseURL = window.$baseURL = 'http://127.0.0.1:8000/';
 Axios.defaults.withCredentials = true;
 
 app.config.globalProperties.$in_progress = window.in_progress = true;
@@ -81,10 +83,6 @@ Axios.interceptors.response.use(function (response) {
     app.config.globalProperties.$loading = {
         in_progress: false
     };
-
-    if (Object.prototype.hasOwnProperty.call(response.data, 'message') && response.data.message == "Unauthenticated") {
-        store.commit('auth/logout');
-    }
 
     // Do something with response data
     NProgress.done();
@@ -143,33 +141,6 @@ router.beforeEach((to, from, next) => {
     };
 
     NProgress.start();
-
-    if (to.meta.middlewareAuth) {
-        if (!store.getters["auth/loggedIn"]) {
-            next({
-                path: "/login",
-                query: {
-                    redirect: to.fullPath,
-                },
-            });
-
-            return;
-        }
-    }
-
-
-    if (to.matched.some((record) => record.meta.middlewareAuth)) {
-        if (!store.getters["auth/loggedIn"]) {
-            next({
-                path: "/login",
-                query: {
-                    redirect: to.fullPath,
-                },
-            });
-
-            return;
-        }
-    }
 
     next();
 });
