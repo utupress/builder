@@ -1,9 +1,9 @@
 <template>
 
-    <Popper :class="theme" :show="showPopper">
-        <button  class="btn btn-primary" @click="showPopper=!showPopper">Add Section</button>
+    <Popper :class="theme">
+        <button class="btn btn-primary" @click="showPopper = !showPopper">Add Section</button>
 
-        <template #content>
+        <template #content="{ close }">
 
             <ul class="nav nav-pills bg-blue-500">
                 <li class="nav-item">
@@ -20,12 +20,12 @@
 
             <div class="et-fb-columns-layout grid grid-cols-3 gap-2 p-2"
                 :class="[icon_type == 'regular' ? '' : 'hidden']">
-                <div class="column-block-wrapper" v-on:click="addSection('4_4', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/1'); close()">
                     <div class="column-block-wrap" style="width: 100%;">
                         <div class="column-block">4/4</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_2,1_2', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/2,1/2'); close()">
                     <div class="column-block-wrap" style="width: 50%;">
                         <div class="column-block">1/2</div>
                     </div>
@@ -33,7 +33,7 @@
                         <div class="column-block">1/2</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_3,1_3,1_3', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/3,1/3,1/3'); close()">
                     <div class="column-block-wrap" style="width: 33.3333%;">
                         <div class="column-block">1/3</div>
                     </div>
@@ -44,7 +44,7 @@
                         <div class="column-block">1/3</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_4,1_4,1_4,1_4', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/4,1/4,1/4,1/4'); close()">
                     <div class="column-block-wrap" style="width: 25%;">
                         <div class="column-block">1/4</div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="column-block">1/4</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_5,1_5,1_5,1_5,1_5', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/5,1/5,1/5,1/5,1/5'); close()">
                     <div class="column-block-wrap" style="width: 20%;">
                         <div class="column-block">1/5</div>
                     </div>
@@ -75,7 +75,7 @@
                         <div class="column-block">1/5</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_6,1_6,1_6,1_6,1_6,1_6', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/6,1/6,1/6,1/6,1/6,1/6'); close()">
                     <div class="column-block-wrap" style="width: 16.6667%;">
                         <div class="column-block">1/6</div>
                     </div>
@@ -95,7 +95,7 @@
                         <div class="column-block">1/6</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('2_5,3_5', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('2/5,3/5'); close()">
                     <div class="column-block-wrap" style="width: 40%;">
                         <div class="column-block">2/5</div>
                     </div>
@@ -103,7 +103,7 @@
                         <div class="column-block">3/5</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('3_5,2_5', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('3/5,2/5'); close()">
                     <div class="column-block-wrap" style="width: 60%;">
                         <div class="column-block">3/5</div>
                     </div>
@@ -111,7 +111,7 @@
                         <div class="column-block">2/5</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_3,2_3', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/3,2/3'); close()">
                     <div class="column-block-wrap" style="width: 33.3333%;">
                         <div class="column-block">1/3</div>
                     </div>
@@ -119,7 +119,7 @@
                         <div class="column-block">2/3</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('2_3,1_3', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('2/3,1/3'); close()">
                     <div class="column-block-wrap" style="width: 66.6667%;">
                         <div class="column-block">2/3</div>
                     </div>
@@ -127,7 +127,7 @@
                         <div class="column-block">1/3</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_4,3_4', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/4,3/4'); close()">
                     <div class="column-block-wrap" style="width: 25%;">
                         <div class="column-block">1/4</div>
                     </div>
@@ -135,7 +135,7 @@
                         <div class="column-block">3/4</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('3_4,1_4', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('3/4,1/4'); close()">
                     <div class="column-block-wrap" style="width: 75%;">
                         <div class="column-block">3/4</div>
                     </div>
@@ -143,7 +143,7 @@
                         <div class="column-block">1/4</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_4,1_2,1_4', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/4,1/2,1/4'); close()">
                     <div class="column-block-wrap" style="width: 25%;">
                         <div class="column-block">1/4</div>
                     </div>
@@ -154,7 +154,7 @@
                         <div class="column-block">1/4</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_5,3_5,1_5', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/5,3/5,1/5'); close()">
                     <div class="column-block-wrap" style="width: 20%;">
                         <div class="column-block">1/5</div>
                     </div>
@@ -165,7 +165,7 @@
                         <div class="column-block">1/5</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_4,1_4,1_2', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/4,1/4,1/2'); close()">
                     <div class="column-block-wrap" style="width: 25%;">
                         <div class="column-block">1/4</div>
                     </div>
@@ -176,7 +176,7 @@
                         <div class="column-block">1/2</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_2,1_4,1_4', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/2,1/4,1/4'); close()">
                     <div class="column-block-wrap" style="width: 50%;">
                         <div class="column-block">1/2</div>
                     </div>
@@ -187,7 +187,7 @@
                         <div class="column-block">1/4</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_5,1_5,3_5', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/5,1/5,3/5'); close()">
                     <div class="column-block-wrap" style="width: 20%;">
                         <div class="column-block">1/5</div>
                     </div>
@@ -198,7 +198,7 @@
                         <div class="column-block">3/5</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('3_5,1_5,1_5', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('3/5,1/5,1/5'); close()">
                     <div class="column-block-wrap" style="width: 60%;">
                         <div class="column-block">3/5</div>
                     </div>
@@ -209,7 +209,7 @@
                         <div class="column-block">1/5</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_6,1_6,1_6,1_2', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/6,1/6,1/6,1/2'); close()">
                     <div class="column-block-wrap" style="width: 16.6667%;">
                         <div class="column-block">1/6</div>
                     </div>
@@ -223,7 +223,7 @@
                         <div class="column-block">1/2</div>
                     </div>
                 </div>
-                <div class="column-block-wrapper" v-on:click="addSection('1_2,1_6,1_6,1_6', 'regular')">
+                <div class="column-block-wrapper" v-on:click="addSection('1/2,1/6,1/6,1/6'); close()">
                     <div class="column-block-wrap" style="width: 50%;">
                         <div class="column-block">1/2</div>
                     </div>
@@ -241,7 +241,7 @@
 
             <ul class="et-fb-modules-list grid grid-cols-3 gap-2 p-2"
                 :class="[icon_type == 'specialty' ? '' : 'hidden']">
-                <li class="1_2,1_2 et_fb_specialty_layout_item" v-on:click="addSection('1_2,1_2', 'specialty', '1,0')">
+                <li class="1_2,1_2 et_fb_specialty_layout_item" v-on:click="addSection('1/2,1/2', '1,0'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_1_2 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
                         <div class="et_pb_variation_row">
@@ -256,7 +256,7 @@
                     </div>
                     <div class="et_pb_layout_column et_pb_column_layout_1_2 et_pb_specialty_column"></div>
                 </li>
-                <li class="1_2,1_2 et_fb_specialty_layout_item" v-on:click="addSection('1_2,1_2', 'specialty', '0,1')">
+                <li class="1_2,1_2 et_fb_specialty_layout_item" v-on:click="addSection('1/2,1/2', '0,1'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_1_2 et_pb_specialty_column"></div>
                     <div class="et_pb_layout_column et_pb_column_layout_1_2 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
@@ -271,7 +271,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="1_4,3_4 et_fb_specialty_layout_item" v-on:click="addSection('1_4,3_4', 'specialty', '0,1')">
+                <li class="1_4,3_4 et_fb_specialty_layout_item" v-on:click="addSection('1/4,3/4', '0,1'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_1_4 et_pb_specialty_column"></div>
                     <div class="et_pb_layout_column et_pb_column_layout_3_4 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
@@ -286,7 +286,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="3_4,1_4 et_fb_specialty_layout_item" v-on:click="addSection('3_4,1_4', 'specialty', '1,0')">
+                <li class="3_4,1_4 et_fb_specialty_layout_item" v-on:click="addSection('3/4,1/4', '1,0'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_3_4 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
                         <div class="et_pb_variation_row">
@@ -302,7 +302,7 @@
                     <div class="et_pb_layout_column et_pb_column_layout_1_4 et_pb_specialty_column"></div>
                 </li>
                 <li class="1_4,1_2,1_4 et_fb_specialty_layout_item"
-                    v-on:click="addSection('1_4,1_2,1_4', 'specialty', '0,1,0')">
+                    v-on:click="addSection('1/4,1/2,1/4', '0,1,0'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_1_4 et_pb_specialty_column"></div>
                     <div class="et_pb_layout_column et_pb_column_layout_1_2 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
@@ -319,7 +319,7 @@
                     <div class="et_pb_layout_column et_pb_column_layout_1_4 et_pb_specialty_column"></div>
                 </li>
                 <li class="1_2,1_4,1_4 et_fb_specialty_layout_item"
-                    v-on:click="addSection('1_2,1_4,1_4', 'specialty', '1,0,0')">
+                    v-on:click="addSection('1/2,1/4,1/4', '1,0,0'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_1_2 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
                         <div class="et_pb_variation_row">
@@ -336,7 +336,7 @@
                     <div class="et_pb_layout_column et_pb_column_layout_1_4 et_pb_specialty_column"></div>
                 </li>
                 <li class="1_4,1_4,1_2 et_fb_specialty_layout_item"
-                    v-on:click="addSection('1_4,1_4,1_2', 'specialty', '0,0,1')">
+                    v-on:click="addSection('1/4,1/4,1/2', '0,0,1'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_1_4 et_pb_specialty_column"></div>
                     <div class="et_pb_layout_column et_pb_column_layout_1_4 et_pb_specialty_column"></div>
                     <div class="et_pb_layout_column et_pb_column_layout_1_2 et_pb_variations et_pb_3_variations">
@@ -352,7 +352,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="1_3,2_3 et_fb_specialty_layout_item" v-on:click="addSection('1_3,2_3', 'specialty', '0,1')">
+                <li class="1_3,2_3 et_fb_specialty_layout_item" v-on:click="addSection('1/3,2/3', '0,1'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_1_3 et_pb_specialty_column"></div>
                     <div class="et_pb_layout_column et_pb_column_layout_2_3 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
@@ -368,7 +368,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="2_3,1_3 et_fb_specialty_layout_item" v-on:click="addSection('2_3,1_3', 'specialty', '1,0')">
+                <li class="2_3,1_3 et_fb_specialty_layout_item" v-on:click="addSection('2/3,1/3', '1,0'); close()">
                     <div class="et_pb_layout_column et_pb_column_layout_2_3 et_pb_variations et_pb_3_variations">
                         <div class="et_pb_variation et_pb_variation_full"></div>
                         <div class="et_pb_variation_row">
@@ -395,7 +395,6 @@
 
 export default {
     name: 'SectionPopper',
-
     data() {
         return {
             icon_type: 'regular',
@@ -403,9 +402,31 @@ export default {
         }
     },
     methods: {
-        addSection(layout, type, ordering = '', column = '3') {
-            alert('addSection');
-            this.showPopper = !this.showPopper;
+        addSection(layout, ordering = '', column = '3') {
+
+            var section = { blocks: [] };
+            
+            const layouts = layout.split(",");
+
+            layouts.forEach(item => {
+                var block = {};
+                if (item == '1/1') {
+                    block['width'] = 'w-full';
+                } else {
+                    block['width'] = item;
+                }
+
+                section.blocks.push(block);
+            });
+            
+            if (this.icon_type == 'specialty') {
+                console.log('sdfsdf');
+            }
+
+            this.$emit('updateChange', section);
+
+
+            this.icon_type = 'regular';
         },
     },
 }
