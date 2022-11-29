@@ -2,7 +2,9 @@
 
   <div v-for="(section, s_index) in sections" class="flex" :key="s_index">
     <div v-for="(block, b_index) in section.blocks" :class="'w-' + block.width" :key="b_index">
-      <button class="btn btn-warning my-2">Add Block</button>
+      <div class="text-center">
+        <button class="btn btn-warning my-2">Add Block</button>
+      </div>
     </div>
   </div>
 
