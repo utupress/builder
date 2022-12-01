@@ -2,8 +2,11 @@
 
   <div v-for="(section, s_index) in sections" class="flex" :key="s_index">
     <div v-for="(block, b_index) in section.blocks" :class="'w-' + block.width" :key="b_index">
+      
+      <component v-for="(tmp_component, c_index) in block.components" :key="c_index" :is="tmp_component" />
+      
       <div class="text-center">
-        <modal-popper :id_str="('s' + s_index + '_' + b_index)" @updateChange="addBlock"></modal-popper>
+        <modal-popper :id_str="('s_' + s_index + '_' + b_index)" @updateChange="addComponent"></modal-popper>
       </div>
     </div>
   </div>
@@ -29,9 +32,17 @@ export default {
   data() {
     return {
       sections: [],
+      components: []
     }
   },
   methods: {
+    addComponent(component) {
+      const id_str_arr = component.id_str.split("_");
+      const id_1 = id_str_arr[1];
+      const id_2 = id_str_arr[2];
+
+      this.sections[id_1]['blocks'][id_2]['components'].push(this.$filters.fetchComponent(component.name));
+    },
     addSection(section) {
       this.sections.push(section);
       console.log(this.sections);

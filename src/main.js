@@ -36,7 +36,10 @@ import autorouter from "@/components/router/autorouter";
 
 import Popper from "vue3-popper";
 
+import filters from "@/utils/filters";
+
 window.$Modal = Modal;
+window.$filters = window.$func = window.$helper = filters;
 
 const app = createApp(App)
     .use(plugin, defaultConfig(config));
@@ -46,14 +49,16 @@ const app = createApp(App)
 //xxxxxxxxxxxxxxxxxxxxx  Axios Loader xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-Axios.defaults.compURL = window.$compURL = 'http://127.0.0.1:8000/componentlist/';
-Axios.defaults.baseURL = window.$baseURL = 'http://127.0.0.1:8000/';
+Axios.defaults.compURL = window.$compURL = 'http://127.0.0.1:8000/componentlist';
+Axios.defaults.baseURL = window.$baseURL = 'http://127.0.0.1:8000';
 Axios.defaults.withCredentials = true;
 
 app.config.globalProperties.$in_progress = window.in_progress = true;
 app.config.globalProperties.$loading = window.loading = {
     in_progress: true
 };
+app.config.globalProperties.$filters = filters;
+app.config.globalProperties.$func = filters;
 
 Axios.defaults.timeout = 10000;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';

@@ -15,6 +15,8 @@ const options = {
         vue: Vue
     },
     async getFile(url) {
+        
+        console.log(url)
         const res = await fetch(url);
         if (!res.ok)
         return {
@@ -70,7 +72,7 @@ const options = {
 }
 
 const fetchComponent = (comp_path) => {
-    let path_url = window.$compURL + '/' + comp_path;
+    let path_url = window.$baseURL + '/components/' + comp_path;
 
     return Vue.defineAsyncComponent(() => loadModule(path_url, options));
 }

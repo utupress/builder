@@ -408,20 +408,18 @@ export default {
         addSection(layout, ordering = '', column = '3') {
 
             var section = { blocks: [] };
-            
+
             const layouts = layout.split(",");
 
             layouts.forEach(item => {
-                var block = {};
-                if (item == '1/1') {
-                    block['width'] = 'full';
-                } else {
+                var block = { width: 'full', 'components': [] };
+                if (item != '1/1') {
                     block['width'] = item;
                 }
 
                 section.blocks.push(block);
             });
-            
+
             if (this.icon_type == 'specialty') {
                 console.log('sdfsdf');
             }
