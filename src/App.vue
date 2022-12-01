@@ -10,13 +10,15 @@ export default {
 
     var scripts = [
       "https://cdn.tailwindcss.com",
+      "https://use.fontawesome.com/releases/v5.15.4/js/all.js",
     ];
-    
+
     scripts.forEach(script => {
       let tag = document.createElement("script");
       tag.setAttribute("src", script);
       document.head.appendChild(tag);
     });
+
   }
 }
 </script>

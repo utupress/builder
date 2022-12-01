@@ -46,7 +46,7 @@ const app = createApp(App)
 //xxxxxxxxxxxxxxxxxxxxx  Axios Loader xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-Axios.defaults.compURL = window.$compURL = 'http://127.0.0.1:8000/components/';
+Axios.defaults.compURL = window.$compURL = 'http://127.0.0.1:8000/componentlist/';
 Axios.defaults.baseURL = window.$baseURL = 'http://127.0.0.1:8000/';
 Axios.defaults.withCredentials = true;
 

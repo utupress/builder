@@ -1,7 +1,10 @@
 <template>
 
     <Popper :class="theme">
-        <button class="btn btn-primary" @click="showPopper = !showPopper">Add Section</button>
+        <button class="btn btn-primary" @click="showPopper = !showPopper">
+            <i class="fa fa-plus text-white"></i>
+            Add Section
+        </button>
 
         <template #content="{ close }">
 
@@ -411,7 +414,7 @@ export default {
             layouts.forEach(item => {
                 var block = {};
                 if (item == '1/1') {
-                    block['width'] = 'w-full';
+                    block['width'] = 'full';
                 } else {
                     block['width'] = item;
                 }
