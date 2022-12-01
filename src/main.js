@@ -50,7 +50,7 @@ const app = createApp(App)
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Axios.defaults.compURL = window.$compURL = 'http://127.0.0.1:8000/componentlist';
-Axios.defaults.baseURL = window.$baseURL = 'http://127.0.0.1:8000';
+Axios.defaults.baseURL = window.$baseURL = 'https://utupress.github.io/blocks';
 Axios.defaults.withCredentials = true;
 
 app.config.globalProperties.$in_progress = window.in_progress = true;
