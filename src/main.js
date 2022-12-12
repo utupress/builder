@@ -49,7 +49,7 @@ const app = createApp(App)
 //xxxxxxxxxxxxxxxxxxxxx  Axios Loader xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-Axios.defaults.compURL = window.$compURL = 'http://127.0.0.1:8000/componentlist';
+Axios.defaults.compURL = window.$compURL = 'http://localhost/vue/utupress/utupress.com/laravelsite/componentlist';
 Axios.defaults.baseURL = window.$baseURL = 'https://utupress.github.io/blocks';
 Axios.defaults.withCredentials = true;
 
